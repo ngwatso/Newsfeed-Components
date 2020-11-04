@@ -123,6 +123,7 @@ function articleMaker(artcl) {
   const articlePara2 = document.createElement('p');
   const articlePara3 = document.createElement('p');
   const button = document.createElement('span');
+  const expand = document.querySelector('.expandButton')
 
   article.classList.add('article');
   articleTitle.textContent = data.title;
@@ -131,8 +132,13 @@ function articleMaker(artcl) {
   articlePara1.textContent = data.firstParagraph;
   articlePara2.textContent = data.secondParagraph;
   articlePara3.textContent = data.thirdParagraph;
-  button.classList.add('expendButton');
+  button.classList.add('expandButton');
   button.textContent = '+';
+  expand.addEventListener('click', e => {
+    if(article.class === 'article') {
+      article.classList.toggle('article-open');
+    }
+  })
 
   return article
 }
