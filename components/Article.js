@@ -175,3 +175,14 @@ const newArticle = {
 }
 const articleContent = articleMaker(newArticle);
 articles.appendChild(articleContent);
+
+const newArticle2 = {
+  title: "Here's Another Article",
+  date: "11/04/2020",
+  firstParagraph: "Surprise, Surprise, more Blah Blah, Blah.",
+  secondParagraph: "You guessed it, Blah, Blah, Blah.",
+  thirdParagraph: "One more big BLAAAAAAAAAAAAAAAAAAH for good measure.",
+}
+
+const articleContent2 = articleMaker(newArticle2);
+articles.appendChild(articleContent2);
