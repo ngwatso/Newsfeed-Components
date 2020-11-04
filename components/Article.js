@@ -153,7 +153,7 @@ article.appendChild(button);
     article.classList.toggle("article-open");
   })
   
-  return article
+  return article;
 }
 
 // append content
