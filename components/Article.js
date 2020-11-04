@@ -116,6 +116,8 @@ const data = [
 */
 
 function articleMaker(artcl) {
+
+  // Create Elements
   const article = document.createElement('div');
   const articleTitle = document.createElement('h2');
   const articleDate = document.createElement('p');
@@ -123,22 +125,53 @@ function articleMaker(artcl) {
   const articlePara2 = document.createElement('p');
   const articlePara3 = document.createElement('p');
   const button = document.createElement('span');
-  const expand = document.querySelector('.expandButton')
-
-  article.classList.add('article');
-  articleTitle.textContent = data.title;
-  articleDate.classList.add('date');
-  articleDate.textContent = data.date;
-  articlePara1.textContent = data.firstParagraph;
-  articlePara2.textContent = data.secondParagraph;
-  articlePara3.textContent = data.thirdParagraph;
   button.classList.add('expandButton');
-  button.textContent = '+';
-  expand.addEventListener('click', e => {
-    if(article.class === 'article') {
-      article.classList.toggle('article-open');
-    }
-  })
+  const expand = document.querySelector('.expandButton');
 
+  // Structure Elements
+article.appendChild(articleTitle);
+article.appendChild(articleDate);
+article.appendChild(articlePara1);
+article.appendChild(articlePara2);
+article.appendChild(articlePara3);
+article.appendChild(button);
+
+  // Add classes, content
+  article.classList.add('article');
+  articleTitle.textContent = artcl.title;
+  articleDate.classList.add('date');
+  articleDate.textContent = artcl.date;
+  articlePara1.textContent = artcl.firstParagraph;
+  articlePara2.textContent = artcl.secondParagraph;
+  articlePara3.textContent = artcl.thirdParagraph;
+ 
+  button.textContent = '+';
+
+  
+  // Event listener
+  button.addEventListener('click', () => {
+    article.classList.toggle("article-open");
+  })
+  
   return article
 }
+
+// append content
+
+const articles = document.querySelector('.articles')
+
+
+// loop through object
+data.forEach(artcl => {
+articles.appendChild(articleMaker(artcl));
+})
+
+const newArticle = {
+  title: "This Is My Title",
+  date: "11/04/2020",
+  firstParagraph: "Blah Blah Blah",
+  secondParagraph: "More Blahs",
+  thridParagraph: "Even more Blahs",
+}
+const articleContent = articleMaker(newArticle);
+articles.appendChild(articleContent);
