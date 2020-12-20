@@ -114,3 +114,75 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+function articleMaker(artcl) {
+
+  // Create Elements
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const articlePara1 = document.createElement('p');
+  const articlePara2 = document.createElement('p');
+  const articlePara3 = document.createElement('p');
+  const button = document.createElement('span');
+  button.classList.add('expandButton');
+  const expand = document.querySelector('.expandButton');
+
+  // Structure Elements
+article.appendChild(articleTitle);
+article.appendChild(articleDate);
+article.appendChild(articlePara1);
+article.appendChild(articlePara2);
+article.appendChild(articlePara3);
+article.appendChild(button);
+
+  // Add classes, content
+  article.classList.add('article');
+  articleTitle.textContent = artcl.title;
+  articleDate.classList.add('date');
+  articleDate.textContent = artcl.date;
+  articlePara1.textContent = artcl.firstParagraph;
+  articlePara2.textContent = artcl.secondParagraph;
+  articlePara3.textContent = artcl.thirdParagraph;
+ 
+  button.textContent = '+';
+
+  
+  // Event listener
+  button.addEventListener('click', () => {
+    article.classList.toggle("article-open");
+  })
+  
+  return article;
+}
+
+// append content
+
+const articles = document.querySelector('.articles')
+
+
+// loop through object
+data.forEach(artcl => {
+articles.appendChild(articleMaker(artcl));
+})
+
+const newArticle = {
+  title: "This Is My Title",
+  date: "11/04/2020",
+  firstParagraph: "Blah Blah Blah",
+  secondParagraph: "More Blahs",
+  thridParagraph: "Even more Blahs",
+}
+const articleContent = articleMaker(newArticle);
+articles.appendChild(articleContent);
+
+const newArticle2 = {
+  title: "Here's Another Article",
+  date: "11/04/2020",
+  firstParagraph: "Surprise, Surprise, more Blah Blah, Blah.",
+  secondParagraph: "You guessed it, Blah, Blah, Blah.",
+  thirdParagraph: "One more big BLAAAAAAAAAAAAAAAAAAH for good measure.",
+}
+
+const articleContent2 = articleMaker(newArticle2);
+articles.appendChild(articleContent2);
